@@ -78,7 +78,7 @@ public class Fraction {
 
     public Fraction add(Fraction other) {
         if (other == null) {
-            throw new IllegalArgumentException("Fraction cannot be null.");
+            throw new IllegalArgumentException("Fraction cannot be null!");
         }
         int newNumerator = this.numerator * other.denominator
                 + other.numerator * this.denominator;
@@ -92,7 +92,7 @@ public class Fraction {
 
     public Fraction subtract(Fraction other) {
         if (other == null) {
-            throw new IllegalArgumentException("Fraction cannot be null.");
+            throw new IllegalArgumentException("Fraction cannot be null!");
         }
         int newNumerator = this.numerator * other.denominator
                 - other.numerator * this.denominator;
@@ -124,7 +124,7 @@ public class Fraction {
 
         if (other.numerator == 0) {
             throw new ArithmeticException(
-                    "Cannot divide by a fraction with numerator 0."
+                    "Cannot divide by a fraction with numerator 0!"
             );
         }
 
@@ -139,7 +139,7 @@ public class Fraction {
 
         if (other == 0) {
             throw new ArithmeticException(
-                    "Cannot divide by zero."
+                    "Cannot divide by zero!"
             );
         }
 
