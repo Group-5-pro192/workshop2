@@ -1,7 +1,6 @@
 package workshop2;
 
 import java.util.Scanner;
-import jdk.nashorn.internal.objects.NativeString;
 
 public class App {
 
@@ -36,7 +35,7 @@ public class App {
         boolean isNumValid = false;
         do {
             try {
-                System.out.println("Please enter numerator: ");
+                System.out.printf("Please enter numerator: ");
                 numerator = Integer.parseInt(sc.nextLine().trim());
                 isNumValid = true;
             } catch (NumberFormatException e) {
@@ -48,7 +47,7 @@ public class App {
         boolean isDenValid = false;
         do {
             try {
-                System.out.println("Please enter denominator (non-zero): ");
+                System.out.printf("Please enter denominator (non-zero): ");
                 demonitrator = Integer.parseInt(sc.nextLine().trim());
                 if (demonitrator == 0) {
                     throw new IllegalArgumentException("Denominator cannot be zero! Please enter another value.");
@@ -61,15 +60,55 @@ public class App {
             }
         } while (!isDenValid);
         Fraction f = new Fraction(numerator, demonitrator);
-        System.out.println("Successfully added!");
+        System.out.println("Successfully added" + name + "!");
         return f;
+    }
+
+    private boolean checkFractionExist() {
+        if (fraction1 == null || fraction2 == null) {
+            System.out.printf("Please input both Fraction 1 and Fraction 2 first!");
+            return false;
+        }
+        return true;
+    }
+
+    private void addFractions() {
+        if (checkFractionExist()) {
+            Fraction result = fraction1.add(fraction2);
+            System.out.printf("Result: (%s) + (%s) = %s\\n", fraction1, fraction2, result);
+        }
+    }
+
+    private void multiplyFractions() {
+        if (checkFractionExist()) {
+            Fraction result = fraction1.multiply(fraction2);
+            System.out.printf("Result: (%s) * (%s) = %s\\n", fraction1, fraction2, result);
+        }
+    }
+
+    private void subtractFractions() {
+        if (checkFractionExist()) {
+            Fraction result = fraction1.subtract(fraction2);
+            System.out.printf("Result: (%s) - (%s) = %s\\n", fraction1, fraction2, result);
+        }
+    }
+
+    private void divideFractions() {
+        if (checkFractionExist()) {
+            try {
+                Fraction result = fraction1.divide(fraction2);
+                System.out.printf("Result: (%s) / (%s) = %s\n", fraction1, fraction2, result);
+            } catch (ArithmeticException e) {
+                System.out.println("\"Math Error: \" + e.getMessage()");
+            }
+        }
     }
 
     public void run() {
         int func;
         do {
 
-            System.out.println("FRACTION MANAGEMENT");
+            System.out.println("\nFRACTION MANAGEMENT");
             System.out.println("1. Input Fraction 1");
             System.out.println("2. Input Fraction 2");
             System.out.println("3. Add Fractions (f1 + f2)");
@@ -79,27 +118,34 @@ public class App {
 
             func = readFunction();
 
+            switch (func) {
+                case 1:
+                    fraction1 = inputFraction("Fraction 1");
+                    break;
+                case 2:
+                    fraction2 = inputFraction("Fraction 2");
+                    break;
+                case 3:
+                    addFractions();
+                    break;
+                case 4:
+                    subtractFractions();
+                    break;
+                case 5:
+                    multiplyFractions();
+                    break;
+                case 6:
+                    divideFractions();
+                    break;
+                case 7:
+                    System.out.println("\"FA26 # SE2102 # Workshop02 # Group 5");
+                    break;
+            }
         } while (func != 7);
-        switch (func) {
-            case 1:
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-            case 4:
-                break;
-            case 5:
-                break;
-            case 6:
-                break;
-            case 7:
-                break;
-
-        }
     }
 
     public static void main(String[] args) {
-
+        App app = new App();
+        app.run();
     }
 }
