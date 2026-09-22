@@ -19,26 +19,32 @@ public class Fraction {
     private int numerator;
     private int denominator;
 
-    // TODO Member 1: Viết 3 Constructor ở đây
     public Fraction() {
-        // Viết mã khởi tạo mặc định...
+        numerator = 0;
+        denominator = 1;
     }
 
     public Fraction(int numerator) {
-        // Viết mã khởi tạo với 1 tham số...
+        this.numerator = numerator;
+        this.denominator = 1;
     }
 
     public Fraction(int numerator, int denominator) {
-        // Viết mã khởi tạo với 2 tham số (nhớ validate mẫu khác 0 và gọi simplify)...
+
+        if (denominator == 0) {
+            throw new IllegalArgumentException("Denominator cannot be zero.");
+        }
+
+        this.numerator = numerator;
+        this.denominator = denominator;
     }
 
-    // TODO Member 1: Viết Getter và Setter ở đây
     public int getNumerator() {
         return this.numerator;
     }
 
     public void setNumerator(int numerator) {
-        // Viết mã gán tử số...
+        this.numerator = numerator;
     }
 
     public int getDenominator() {
@@ -46,8 +52,13 @@ public class Fraction {
     }
 
     public void setDenominator(int denominator) {
-        // Viết mã gán mẫu số (nhớ kiểm tra mẫu khác 0)...
+        if (denominator == 0) {
+            throw new IllegalArgumentException("Denominator cannot be zero.");
+        }
+
+        this.denominator = denominator;
     }
+}
 
     // ==========================================
     // THÀNH VIÊN 2: Tối giản Phân số & Hiển thị
