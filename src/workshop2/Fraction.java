@@ -145,17 +145,6 @@ public class Fraction {
     //     + Fraction divide(int other)
     // ==========================================
     // ==========================================
-// THÀNH VIÊN 4: Phép Nhân & Phép Chia
-// Nhiệm vụ:
-// - Cài đặt phép nhân:
-//     + Fraction multiply(Fraction other)
-//     + Fraction multiply(int other)
-// - Cài đặt phép chia:
-//     + Fraction divide(Fraction other)
-//     + Fraction divide(int other)
-// ==========================================
-
-// Fraction * Fraction
 public Fraction multiply(Fraction other) {
     int newNumerator = this.numerator * other.numerator;
     int newDenominator = this.denominator * other.denominator;
