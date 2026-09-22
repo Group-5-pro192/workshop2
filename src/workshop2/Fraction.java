@@ -58,6 +58,10 @@ public class Fraction {
 
         this.denominator = denominator;
     }
+
+    Fraction add(Fraction fraction2) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
 
     // ==========================================
