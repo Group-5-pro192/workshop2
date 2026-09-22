@@ -144,25 +144,60 @@ public class Fraction {
     //     + Fraction divide(Fraction other)
     //     + Fraction divide(int other)
     // ==========================================
-    // TODO Member 4: Phép Nhân
-    public Fraction multiply(Fraction other) {
-        // Viết mã nhân 2 phân số...
-        return null;
+    // ==========================================
+// THÀNH VIÊN 4: Phép Nhân & Phép Chia
+// Nhiệm vụ:
+// - Cài đặt phép nhân:
+//     + Fraction multiply(Fraction other)
+//     + Fraction multiply(int other)
+// - Cài đặt phép chia:
+//     + Fraction divide(Fraction other)
+//     + Fraction divide(int other)
+// ==========================================
+
+// Fraction * Fraction
+public Fraction multiply(Fraction other) {
+    int newNumerator = this.numerator * other.numerator;
+    int newDenominator = this.denominator * other.denominator;
+
+    return new Fraction(newNumerator, newDenominator);
+}
+
+// Fraction * Integer
+public Fraction multiply(int other) {
+    int newNumerator = this.numerator * other;
+    int newDenominator = this.denominator;
+
+    return new Fraction(newNumerator, newDenominator);
+}
+
+// Fraction / Fraction
+public Fraction divide(Fraction other) {
+
+    if (other.numerator == 0) {
+        throw new ArithmeticException(
+                "Cannot divide by a fraction with numerator 0."
+        );
     }
 
-    public Fraction multiply(int other) {
-        // Viết mã nhân phân số với số nguyên...
-        return null;
+    int newNumerator = this.numerator * other.denominator;
+    int newDenominator = this.denominator * other.numerator;
+
+    return new Fraction(newNumerator, newDenominator);
+}
+
+// Fraction / Integer
+public Fraction divide(int other) {
+
+    if (other == 0) {
+        throw new ArithmeticException(
+                "Cannot divide by zero."
+        );
     }
 
-    // TODO Member 4: Phép Chia
-    public Fraction divide(Fraction other) {
-        // Viết mã chia 2 phân số...
-        return null;
-    }
+    int newNumerator = this.numerator;
+    int newDenominator = this.denominator * other;
 
-    public Fraction divide(int other) {
-        // Viết mã chia phân số cho số nguyên...
-        return null;
-    }
+    return new Fraction(newNumerator, newDenominator);
+}
 }
