@@ -15,7 +15,6 @@ public class Fraction {
     //     + getNumerator(), setNumerator(int numerator)
     //     + getDenominator(), setDenominator(int denominator): kiểm tra mẫu != 0.
     // ==========================================
-    
     // TODO Member 1: Khai báo thuộc tính ở đây
     private int numerator;
     private int denominator;
@@ -50,7 +49,6 @@ public class Fraction {
         // Viết mã gán mẫu số (nhớ kiểm tra mẫu khác 0)...
     }
 
-
     // ==========================================
     // THÀNH VIÊN 2: Tối giản Phân số & Hiển thị
     // Nhiệm vụ:
@@ -58,7 +56,6 @@ public class Fraction {
     // - private void simplify(): Tối giản tử/mẫu bằng gcd và đẩy dấu trừ về tử nếu mẫu âm.
     // - @Override public String toString(): Trả về chuỗi dạng "a/b", "a" (nếu mẫu = 1) hoặc "0".
     // ==========================================
-
     // TODO Member 2: Viết hàm gcd
     private int gcd(int a, int b) {
         // Viết thuật toán tìm ƯCLN tại đây...
@@ -77,7 +74,6 @@ public class Fraction {
         return "";
     }
 
-
     // ==========================================
     // THÀNH VIÊN 3: Phép Cộng & Phép Trừ
     // Nhiệm vụ:
@@ -88,29 +84,43 @@ public class Fraction {
     //     + Fraction subtract(Fraction other)
     //     + Fraction subtract(int other)
     // ==========================================
-
     // TODO Member 3: Phép Cộng
+// Viết mã cộng 2 phân số...
+
     public Fraction add(Fraction other) {
-        // Viết mã cộng 2 phân số...
-        return null;
-    }
+        if (other == null) {
+            throw new IllegalArgumentException("Fraction cannot be null.");
+        }
+        int newNumerator = this.numerator * other.denominator
+                + other.numerator * this.denominator;
+        int newDenominator = this.denominator * other.denominator;
 
+        return new Fraction(newNumerator, newDenominator);
+    }
+// Viết mã cộng phân số với số nguyên...
     public Fraction add(int other) {
-        // Viết mã cộng phân số với số nguyên...
-        return null;
-    }
+        int newNumerator = this.numerator + other * this.denominator;
 
+        return new Fraction(newNumerator, this.denominator);
+    }
     // TODO Member 3: Phép Trừ
+// Viết mã trừ 2 phân số...
     public Fraction subtract(Fraction other) {
-        // Viết mã trừ 2 phân số...
-        return null;
-    }
+        if (other == null) {
+            throw new IllegalArgumentException("Fraction cannot be null.");
+        }
+        int newNumerator = this.numerator * other.denominator
+                - other.numerator * this.denominator;
+        int newDenominator = this.denominator * other.denominator;
 
+        return new Fraction(newNumerator, newDenominator);
+    }
+// Viết mã trừ phân số với số nguyên...
     public Fraction subtract(int other) {
-        // Viết mã trừ phân số với số nguyên...
-        return null;
-    }
+        int newNumerator = this.numerator - other * this.denominator;
 
+        return new Fraction(newNumerator, this.denominator);
+    }
 
     // ==========================================
     // THÀNH VIÊN 4: Phép Nhân & Phép Chia
@@ -122,7 +132,6 @@ public class Fraction {
     //     + Fraction divide(Fraction other)
     //     + Fraction divide(int other)
     // ==========================================
-
     // TODO Member 4: Phép Nhân
     public Fraction multiply(Fraction other) {
         // Viết mã nhân 2 phân số...
